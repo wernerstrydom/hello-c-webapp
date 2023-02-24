@@ -1,0 +1,40 @@
+message("CPACK_GENERATOR: ${CPACK_GENERATOR}")
+
+if (CPACK_GENERATOR MATCHES "RPM")
+  set (CPACK_PACKAGE_FILE_NAME            "${CPACK_PACKAGE_NAME}-${CPACK_PACKAGE_VERSION}-1.${CPACK_PACKAGE_ARCHITECTURE}")
+elseif (CPACK_GENERATOR MATCHES "DEB")
+  set (CPACK_DEBIAN_FILE_NAME             DEB-DEFAULT)
+  set (CPACK_DEBIAN_PACKAGE_SHLIBDEPS     YES)
+  set (CPACK_PACKAGE_FILE_NAME            "${CPACK_PACKAGE_NAME}0_${CPACK_PACKAGE_VERSION}-1_${CPACK_PACKAGE_ARCHITECTURE}")
+  set (CPACK_DEBIAN_PACKAGE_DEPENDS)
+  # set (CPACK_DEBIAN_PACKAGE_SECTION     "devel")
+  set (CPACK_DEBIAN_PACKAGE_PRIORITY      "optional")
+  set (CPACK_DEBIAN_PACKAGE_HOMEPAGE      "${CPACK_RPM_PACKAGE_URL}")
+  set (CPACK_DEBIAN_PACKAGE_MAINTAINER    "${CPACK_PACKAGE_VENDOR}")
+  set (CPACK_DEBIAN_PACKAGE_ARCHITECTURE  "${CPACK_PACKAGE_ARCHITECTURE}")
+elseif (CPACK_GENERATOR MATCHES "PackageMaker|DragNDrop")
+   set (CPACK_PACKAGE_FILE_NAME            "${CPACK_PACKAGE_NAME}_${CPACK_PACKAGE_VERSION}_${CPACK_PACKAGE_ARCHITECTURE}")
+elseif (CPACK_GENERATOR MATCHES "ZIP")
+elseif (CPACK_GENERATOR MATCHES "TGZ")
+else()
+endif ()
+
+
+# [2022-03-29T02:42:02.963Z]   7Z                           = 7-Zip file format
+# [2022-03-29T02:42:02.963Z]   Bundle                       = Mac OSX bundle
+# [2022-03-29T02:42:02.963Z]   DragNDrop                    = Mac OSX Drag And Drop
+# [2022-03-29T02:42:02.963Z]   External                     = CPack External packages
+# [2022-03-29T02:42:02.963Z]   IFW                          = Qt Installer Framework
+# [2022-03-29T02:42:02.963Z]   NSIS                         = Null Soft Installer
+# [2022-03-29T02:42:02.963Z]   NSIS64                       = Null Soft Installer (64-bit)
+# [2022-03-29T02:42:02.963Z]   NuGet                        = NuGet packages
+# [2022-03-29T02:42:02.963Z]   OSXX11                       = Mac OSX X11 bundle
+# [2022-03-29T02:42:02.963Z]   PackageMaker                 = Mac OSX Package Maker installer
+# [2022-03-29T02:42:02.963Z]   STGZ                         = Self extracting Tar GZip compression
+# [2022-03-29T02:42:02.963Z]   TBZ2                         = Tar BZip2 compression
+# [2022-03-29T02:42:02.963Z]   TGZ                          = Tar GZip compression
+# [2022-03-29T02:42:02.963Z]   TXZ                          = Tar XZ compression
+# [2022-03-29T02:42:02.963Z]   TZ                           = Tar Compress compression
+# [2022-03-29T02:42:02.963Z]   TZST                         = Tar Zstandard compression
+# [2022-03-29T02:42:02.963Z]   ZIP                          = ZIP file format
+# [2022-03-29T02:42:02.963Z]   productbuild                 = Mac OSX pkg
